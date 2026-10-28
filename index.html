@@ -1,0 +1,644 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0A0807">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BIPRORPA">
+<meta property="og:description" content="RPA, agentes de IA y automatizaciones. Experiencia en WMS, Power Automate y Power BI.">
+<title>BIPRORPA</title>
+<meta name="description" content="Eladio Bardelli, consultor independiente en RPA, agentes de IA y automatizaciones. Experiencia en WMS, Power Automate y Power BI.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: una sola columna editorial; la línea de flujo del hero (evento → bot → agente → WMS → tablero) es el motivo que recorre la página. Look único: negro y naranjo fuego. */
+:root {
+  --ink: #0A0807;
+  --coal: #130F0C;
+  --ash: #2B241F;
+  --bone: #F3EAE2;
+  --bone-dim: #CFC4BB;
+  --smoke: #A89D94;
+  --fire: #FF4D00;
+  --ember: #FF8A2B;
+  --display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  padding-block: 0;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  background: radial-gradient(900px 520px at 88% -4%, rgba(255, 77, 0, 0.26), transparent 62%) no-repeat, var(--ink);
+  color: var(--bone);
+  font: 400 1rem/1.65 var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 1120px; margin-inline: auto; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--ember); outline-offset: 3px; }
+
+/* Encabezado */
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  padding-block: 22px;
+}
+.brand {
+  font: 900 1.7rem/1 var(--display);
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.brand span { color: var(--fire); }
+.top nav { display: flex; gap: 22px; }
+.top nav a {
+  font: 500 0.78rem/1 var(--mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--bone-dim);
+  padding-block: 6px;
+  border-bottom: 2px solid transparent;
+}
+.top nav a:hover { color: var(--bone); border-bottom-color: var(--fire); }
+
+/* Hero */
+.hero { padding-block: clamp(44px, 8vw, 96px) clamp(48px, 7vw, 80px); }
+.eyebrow {
+  font: 500 0.78rem/1.5 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fire);
+  margin: 0 0 20px;
+}
+h1 {
+  font: 900 clamp(3.2rem, 11vw, 8rem)/0.9 var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.005em;
+  text-wrap: balance;
+  margin: 0 0 28px;
+  max-width: 11ch;
+}
+h1 em { font-style: normal; color: var(--fire); }
+.lead {
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+  color: var(--bone-dim);
+  max-width: 56ch;
+  margin: 0 0 34px;
+}
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 24px;
+  border: 2px solid var(--fire);
+  background: transparent;
+  color: var(--bone);
+  font: 600 0.88rem/1 var(--body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn:hover { background: rgba(255, 77, 0, 0.16); }
+.btn.primary { background: var(--fire); color: var(--ink); }
+.btn.primary:hover { background: var(--ember); border-color: var(--ember); }
+
+/* Línea de flujo */
+.flow-block { margin-top: clamp(48px, 8vw, 88px); }
+.flow-cap {
+  font: 400 0.72rem/1.4 var(--mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--smoke);
+  margin: 0 0 26px;
+}
+.flow {
+  list-style: none;
+  margin: 0 0 0 6px;
+  padding: 0;
+  border-left: 2px solid var(--fire);
+}
+.flow li { position: relative; padding: 0 0 24px 24px; min-width: 0; }
+.flow li:last-child { padding-bottom: 0; }
+.flow li::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--fire);
+  box-shadow: 0 0 0 4px var(--ink), 0 0 18px rgba(255, 77, 0, 0.7);
+}
+.flow b {
+  display: block;
+  font: 800 1.35rem/1.1 var(--display);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.flow span { display: block; font-size: 0.92rem; color: var(--smoke); margin-top: 4px; }
+
+@media (min-width: 780px) {
+  .flow {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    margin: 0;
+    border-left: 0;
+    border-top: 2px solid var(--fire);
+    position: relative;
+  }
+  .flow li { padding: 28px 18px 0 0; }
+  .flow li:last-child { padding-bottom: 0; }
+  .flow li::before { left: 0; top: -9px; }
+  .flow::after {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: 0;
+    width: 70px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #FFD2A8);
+    animation: run 4.8s linear infinite;
+  }
+}
+@keyframes run { from { transform: translateX(0); } to { transform: translateX(calc(1120px - 70px)); } }
+@media (min-width: 780px) and (max-width: 1160px) {
+  @keyframes run { from { transform: translateX(0); } to { transform: translateX(calc(100vw - 100px)); } }
+}
+
+/* Secciones */
+section { padding-block: clamp(52px, 8vw, 96px); border-top: 1px solid var(--ash); }
+.kicker {
+  font: 500 0.78rem/1 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fire);
+  margin: 0 0 14px;
+}
+h2 {
+  font: 900 clamp(2.4rem, 7vw, 4.4rem)/0.95 var(--display);
+  text-transform: uppercase;
+  text-wrap: balance;
+  margin: 0 0 18px;
+}
+.sec-lead { color: var(--bone-dim); max-width: 60ch; margin: 0 0 44px; }
+
+.tags { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 18px 0 0; }
+.tags li {
+  font: 400 0.76rem/1 var(--mono);
+  color: var(--smoke);
+  border: 1px solid var(--ash);
+  padding: 7px 10px;
+}
+
+/* Servicios */
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+  gap: 40px 36px;
+}
+.svc { border-top: 3px solid var(--fire); padding-top: 20px; min-width: 0; }
+.svc h3 {
+  font: 800 clamp(1.8rem, 3.4vw, 2.2rem)/1 var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 0 0 12px;
+}
+.svc p { margin: 0; color: var(--bone-dim); }
+
+/* Experiencia */
+.exp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr));
+  gap: 20px;
+}
+.exp { background: var(--coal); border: 1px solid var(--ash); padding: 26px; min-width: 0; }
+.exp .label {
+  font: 500 0.74rem/1 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fire);
+  margin: 0 0 12px;
+}
+.exp h3 {
+  font: 800 1.7rem/1.05 var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 0 0 10px;
+}
+.exp p { margin: 0; color: var(--bone-dim); font-size: 0.97rem; }
+
+.formacion {
+  margin-top: 44px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 18px 32px;
+}
+.formacion div { border-left: 3px solid var(--fire); padding-left: 16px; min-width: 0; }
+.formacion b { display: block; font-weight: 600; }
+.formacion span { color: var(--smoke); font-size: 0.92rem; }
+
+.stack-title {
+  font: 500 0.74rem/1 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--smoke);
+  margin: 48px 0 0;
+}
+
+/* Proyectos */
+.proj-list { list-style: none; margin: 0; padding: 0; }
+.proj {
+  display: grid;
+  grid-template-columns: minmax(0, 250px) minmax(0, 1fr);
+  gap: 8px 40px;
+  padding-block: 30px;
+  border-top: 1px solid var(--ash);
+}
+.proj:last-child { border-bottom: 1px solid var(--ash); }
+.proj .meta {
+  font: 500 0.76rem/1.5 var(--mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fire);
+  margin: 0;
+}
+.proj h3 {
+  font: 800 clamp(1.6rem, 3vw, 2rem)/1.05 var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 0 0 10px;
+}
+.proj p { margin: 0; color: var(--bone-dim); max-width: 62ch; }
+.proj.win { border-left: 3px solid var(--fire); padding-left: 22px; background: linear-gradient(90deg, rgba(255, 77, 0, 0.10), transparent 60%); }
+@media (max-width: 700px) {
+  .proj { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Contacto */
+.contact h2 { max-width: 14ch; }
+.person { margin: 0 0 6px; font-weight: 600; font-size: 1.1rem; }
+.role { margin: 0 0 22px; color: var(--smoke); }
+.phone {
+  display: block;
+  font: 500 clamp(1.7rem, 6vw, 3rem)/1.1 var(--mono);
+  color: var(--fire);
+  margin: 0 0 26px;
+  overflow-wrap: anywhere;
+}
+.mail {
+  display: block;
+  font: 500 clamp(1rem, 3.6vw, 1.45rem)/1.3 var(--mono);
+  color: var(--bone);
+  text-decoration: none;
+  border-bottom: 2px solid var(--fire);
+  width: fit-content;
+  max-width: 100%;
+  margin: -8px 0 28px;
+  overflow-wrap: anywhere;
+}
+.mail:hover { color: var(--ember); }
+.status { font: 400 0.8rem/1 var(--mono); color: var(--smoke); margin: 14px 0 0; min-height: 1em; }
+
+.status.ok { color: var(--ember); }
+
+/* Formulario */
+.msg { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--ash); max-width: 720px; }
+.msg h3 {
+  font: 800 clamp(1.7rem, 4vw, 2.2rem)/1 var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 0 0 22px;
+}
+.msg form { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
+.field { min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+.field label {
+  font: 500 0.74rem/1 var(--mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--smoke);
+}
+.field input, .field textarea {
+  width: 100%;
+  background: var(--coal);
+  color: var(--bone);
+  border: 1px solid var(--ash);
+  border-radius: 0;
+  padding: 13px 14px;
+  font: 400 1rem/1.5 var(--body);
+}
+.field textarea { resize: vertical; min-height: 130px; }
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--fire); box-shadow: 0 0 0 3px rgba(255, 77, 0, 0.25); }
+.send { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+.send .status { margin: 0; }
+.btn:disabled { opacity: 0.55; cursor: default; }
+@media (min-width: 640px) {
+  .msg form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .field.wide, .send { grid-column: 1 / -1; }
+}
+
+footer {
+  border-top: 1px solid var(--ash);
+  padding-block: 28px 36px;
+  font: 400 0.78rem/1.5 var(--mono);
+  color: var(--smoke);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .flow::after { animation: none; display: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#inicio">BIPRO<span>RPA</span></a>
+    <nav aria-label="Secciones">
+      <a href="#servicios">Servicios</a>
+      <a href="#experiencia">Experiencia</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main id="inicio">
+    <div class="hero">
+      <p class="eyebrow">Eladio Bardelli · Consultor independiente · Chile</p>
+      <h1>Procesos que <em>corren solos</em></h1>
+      <p class="lead">RPA, agentes de IA y automatizaciones para operaciones logísticas, administrativas y contables. Conecto tu WMS, tu ERP y tus datos para que tu equipo deje de digitar y empiece a decidir.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://wa.me/56982959405" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+        <a class="btn" href="#servicios">Ver servicios</a>
+      </div>
+
+      <div class="flow-block">
+        <p class="flow-cap">Ejemplo de flujo automatizado</p>
+        <ol class="flow">
+          <li><b>Disparador</b><span>Llega un pedido, un correo o un archivo</span></li>
+          <li><b>Bot RPA</b><span>Captura, valida y cruza los datos</span></li>
+          <li><b>Agente IA</b><span>Clasifica el caso y decide el siguiente paso</span></li>
+          <li><b>WMS · ERP</b><span>Registra el movimiento y libera el despacho</span></li>
+          <li><b>Power BI</b><span>El tablero se actualiza solo</span></li>
+        </ol>
+      </div>
+    </div>
+
+    <section id="servicios">
+      <p class="kicker">Servicios</p>
+      <h2>Qué automatizo</h2>
+      <p class="sec-lead">Tres frentes que se combinan según el proceso: el bot que opera los sistemas, el agente que interpreta la información y el flujo que lo conecta todo.</p>
+      <div class="svc-grid">
+        <article class="svc">
+          <h3>RPA</h3>
+          <p>Robots de software que hacen el trabajo repetitivo: ingresan datos, descargan y cruzan reportes y operan portales o sistemas que no tienen API. Menos digitación y menos errores.</p>
+          <ul class="tags"><li>Portales web</li><li>SAP</li><li>ERP</li><li>SII</li><li>Excel y PDF</li></ul>
+        </article>
+        <article class="svc">
+          <h3>Agentes IA</h3>
+          <p>Agentes que leen correos y documentos, clasifican casos, extraen datos y proponen o ejecutan la siguiente acción, con reglas claras y revisión humana donde corresponde.</p>
+          <ul class="tags"><li>Lectura de documentos</li><li>Clasificación</li><li>Asistentes internos</li><li>Multiagente</li></ul>
+        </article>
+        <article class="svc">
+          <h3>Automatizaciones</h3>
+          <p>Flujos en Power Automate y apps en Power Apps que conectan tus sistemas: aprobaciones, alertas, creación de registros en Salesforce o en tu ERP, y notificaciones a quien corresponde.</p>
+          <ul class="tags"><li>Power Automate</li><li>Power Apps</li><li>Salesforce</li><li>SQL</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="experiencia">
+      <p class="kicker">Experiencia</p>
+      <h2>Vengo de la operación</h2>
+      <p class="sec-lead">Mi base está en logística y control de gestión. Por eso automatizo lo que de verdad mueve la operación, y lo mido en un tablero.</p>
+      <div class="exp-grid">
+        <article class="exp">
+          <p class="label">WMS</p>
+          <h3>Bodega y logística</h3>
+          <p>Procesos de recepción, almacenaje, picking y despacho. Conozco cómo se ve el dato en el WMS y cómo conectarlo con el ERP y con SAP HANA para dejar de conciliar a mano.</p>
+        </article>
+        <article class="exp">
+          <p class="label">RPA</p>
+          <h3>Bots en sistemas y portales</h3>
+          <p>Automatización de tareas sobre sistemas y portales, incluidos procesos contables y tributarios en Chile, como consultas y descargas desde el SII.</p>
+        </article>
+        <article class="exp">
+          <p class="label">Power Automate</p>
+          <h3>Flujos que integran</h3>
+          <p>Flujos que unen Salesforce, bases SQL, correo y aprobaciones, con manejo de errores y registro de lo que pasó en cada ejecución.</p>
+        </article>
+        <article class="exp">
+          <p class="label">Power BI</p>
+          <h3>Modelos y tableros</h3>
+          <p>Modelos en DAX y Power Query, visuales a medida con SVG y HTML, y tableros de logística y control de gestión que se actualizan solos.</p>
+        </article>
+      </div>
+
+      <div class="formacion">
+        <div><b>Lean Six Sigma Black Belt</b><span>Universidad de Chile</span></div>
+        <div><b>Control de Gestión Financiera</b><span>Universidad de Chile</span></div>
+        <div><b>Ingeniería con foco logístico</b><span>Universidad Arturo Prat</span></div>
+      </div>
+
+      <p class="stack-title">Herramientas</p>
+      <ul class="tags">
+        <li>WMS</li><li>RPA</li><li>Power Automate</li><li>Power Apps</li><li>Power BI</li><li>DAX</li><li>Power Query</li><li>Tabular Editor</li><li>SQL</li><li>SAP HANA</li><li>Salesforce</li><li>ERP</li>
+      </ul>
+    </section>
+
+    <section id="proyectos">
+      <p class="kicker">Proyectos</p>
+      <h2>Casos y logros</h2>
+      <ul class="proj-list">
+        <li class="proj">
+          <p class="meta">SQM · con Resolutor</p>
+          <div>
+            <h3>Salesforce y SAP conectados</h3>
+            <p>Apoyo a Resolutor en la automatización entre Salesforce y SAP para SQM, usando integraciones en Power Automate.</p>
+            <ul class="tags"><li>Salesforce</li><li>SAP</li><li>Power Automate</li></ul>
+          </div>
+        </li>
+        <li class="proj">
+          <p class="meta">Productivo.cl · con Nelson Castillo</p>
+          <div>
+            <h3>Automatización para consultores contables</h3>
+            <p>Junto a Nelson Castillo, consultor de productivo.cl, automatizamos todo el flujo de trabajo de los consultores contables, desde las consultas al SII hasta los tableros en Power BI.</p>
+            <ul class="tags"><li>SII</li><li>RPA</li><li>Power BI</li></ul>
+          </div>
+        </li>
+        <li class="proj win">
+          <p class="meta">Claude Impact Lab · Chile Fintech Forum</p>
+          <div>
+            <h3>Ganadores del Claude Impact Lab</h3>
+            <p>Junto a Walter Guzmán, en el equipo Knowledge Builders, ganamos el Claude Impact Lab de Anthropic en Chile, primera parada del programa, realizado dentro del Chile Fintech Forum. En el track de Inclusión financiera desarrollamos Finple, una app donde preguntas con tus palabras qué te tiene dudando con tu plata y te responde claro y corto, con fuentes oficiales y la ley chilena como respaldo. Traduce a lenguaje cotidiano lo que exigen la CMF, el SII y el SERNAC.</p>
+            <ul class="tags"><li>Inclusión financiera</li><li>IA</li><li>CMF</li><li>SII</li><li>SERNAC</li></ul>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="contacto" class="contact">
+      <p class="kicker">Contacto</p>
+      <h2>¿Qué proceso quieres que corra solo?</h2>
+      <p class="person">Eladio Bardelli</p>
+      <p class="role">BIPRORPA · RPA, agentes IA y automatizaciones</p>
+      <span class="phone" id="fono">+56 9 8295 9405</span>
+      <a class="mail" id="correo" href="mailto:eladio@biprorpa.onmicrosoft.com">eladio@biprorpa.onmicrosoft.com</a>
+      <div class="actions">
+        <a class="btn primary" href="https://wa.me/56982959405" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+        <button class="btn" type="button" id="copiar">Copiar número</button>
+        <button class="btn" type="button" id="copiar-correo">Copiar correo</button>
+      </div>
+      <p class="status" id="estado" role="status" aria-live="polite"></p>
+
+      <div class="msg" id="form-mensaje" hidden>
+        <h3>Déjame un mensaje</h3>
+        <form id="contacto-form" novalidate>
+          <div class="field">
+            <label for="f-nombre">Nombre</label>
+            <input id="f-nombre" name="nombre" type="text" maxlength="80" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="f-contacto">Correo o teléfono</label>
+            <input id="f-contacto" name="contacto" type="text" maxlength="120" autocomplete="off">
+          </div>
+          <div class="field wide">
+            <label for="f-mensaje">Mensaje</label>
+            <textarea id="f-mensaje" name="mensaje" rows="5" maxlength="2000" required></textarea>
+          </div>
+          <div class="send">
+            <button class="btn primary" type="submit" id="enviar">Enviar mensaje</button>
+            <p class="status" id="form-estado" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 BIPRORPA</span>
+    <span>Chile</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var btn = document.getElementById("copiar");
+  var fono = document.getElementById("fono");
+  var estado = document.getElementById("estado");
+  function seleccionar() {
+    try {
+      var r = document.createRange();
+      r.selectNodeContents(fono);
+      var s = window.getSelection();
+      s.removeAllRanges();
+      s.addRange(r);
+    } catch (e) {}
+  }
+  btn.addEventListener("click", function () {
+    var numero = fono.textContent.trim();
+    var listo = function () { estado.textContent = "Número copiado."; };
+    var falla = function () { seleccionar(); estado.textContent = "Número seleccionado. Cópialo con Ctrl+C."; };
+    try {
+      navigator.clipboard.writeText(numero).then(listo, falla);
+    } catch (e) { falla(); }
+  });
+})();
+(function () {
+  var btn = document.getElementById("copiar-correo");
+  var correo = document.getElementById("correo");
+  var estado = document.getElementById("estado");
+  btn.addEventListener("click", function () {
+    var texto = correo.textContent.trim();
+    var falla = function () {
+      try {
+        var r = document.createRange();
+        r.selectNodeContents(correo);
+        var s = window.getSelection();
+        s.removeAllRanges();
+        s.addRange(r);
+      } catch (e) {}
+      estado.textContent = "Correo seleccionado. Cópialo con Ctrl+C.";
+    };
+    try {
+      navigator.clipboard.writeText(texto).then(function () { estado.textContent = "Correo copiado."; }, falla);
+    } catch (e) { falla(); }
+  });
+})();
+(function () {
+  var panel = document.getElementById("form-mensaje");
+  var form = document.getElementById("contacto-form");
+  var enviar = document.getElementById("enviar");
+  var estado = document.getElementById("form-estado");
+  var db = null;
+  var uid = null;
+
+  function aviso(texto, ok) {
+    estado.textContent = texto;
+    estado.className = ok ? "status ok" : "status";
+  }
+
+  async function iniciar() {
+    try {
+      var c = window.claude;
+      if (!c || !c.use) return;
+      var cap = await Promise.all([c.use("db"), c.use("user")]);
+      var user = cap[1];
+      db = cap[0];
+      if (!db || !user) return;
+      uid = await user.id();
+      if (!uid) return;
+      var puede = await user.can("data.write");
+      if (puede === false) return;
+      panel.hidden = false;
+    } catch (e) {}
+  }
+
+  form.addEventListener("submit", async function (ev) {
+    ev.preventDefault();
+    var nombre = form.elements["nombre"].value.trim();
+    var contacto = form.elements["contacto"].value.trim();
+    var mensaje = form.elements["mensaje"].value.trim();
+    if (!nombre || !mensaje) {
+      aviso("Completa tu nombre y el mensaje.", false);
+      return;
+    }
+    if (!db || !uid) return;
+    enviar.disabled = true;
+    aviso("Enviando…", false);
+    try {
+      var ahora = new Date().toISOString();
+      await db.doc("mensajes/" + uid).set({ nombre: nombre, contacto: contacto, ultimo: ahora });
+      await db.collection("mensajes/" + uid + "/items").add({ nombre: nombre, contacto: contacto, mensaje: mensaje, creado: ahora });
+      form.reset();
+      aviso("Mensaje enviado. Gracias.", true);
+    } catch (e) {
+      aviso("No pude enviar el mensaje desde aquí. Escríbeme por WhatsApp o al correo.", false);
+    }
+    enviar.disabled = false;
+  });
+
+  iniciar();
+})();
+</script>
+</body>
+</html>
