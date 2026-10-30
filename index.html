@@ -286,6 +286,21 @@ h2 {
 }
 .proj p { margin: 0; color: var(--bone-dim); max-width: 62ch; }
 .proj.win { border-left: 3px solid var(--fire); padding-left: 22px; background: linear-gradient(90deg, rgba(255, 77, 0, 0.10), transparent 60%); }
+.proj-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 11px 18px;
+  border: 2px solid var(--fire);
+  background: var(--fire);
+  color: var(--ink);
+  font: 600 0.84rem/1 var(--body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.proj-link:hover { background: var(--ember); border-color: var(--ember); }
 @media (max-width: 700px) {
   .proj { grid-template-columns: minmax(0, 1fr); }
 }
@@ -489,7 +504,8 @@ footer {
           <p class="meta">Claude Impact Lab · Chile Fintech Forum</p>
           <div>
             <h3>Ganadores del Claude Impact Lab</h3>
-            <p>Junto a Walter Guzmán, en el equipo Knowledge Builders, ganamos el Claude Impact Lab de Anthropic en Chile, primera parada del programa, realizado dentro del Chile Fintech Forum. En el track de Inclusión financiera desarrollamos Finple, una app donde preguntas con tus palabras qué te tiene dudando con tu plata y te responde claro y corto, con fuentes oficiales y la ley chilena como respaldo. Traduce a lenguaje cotidiano lo que exigen la CMF, el SII y el SERNAC.</p>
+            <p>Junto a Walter Guzmán, en el equipo Knowledge Builders, ganamos el Claude Impact Lab de Anthropic en Chile, primera parada del programa, realizado dentro del Chile Fintech Forum. En el track de Inclusión financiera desarrollamos Finple, una app donde preguntas con tus palabras qué te tiene dudando con tu plata y te responde claro y corto, con fuentes oficiales y la ley chilena como respaldo. Traduce a lenguaje cotidiano lo que exigen la CMF, el SII y el SERNAC. Puedes subir un contrato, una cartola o una carta del banco, y te indica qué dice la ley, dónde reclamar y cuál es el siguiente paso, citando fuentes oficiales.</p>
+            <a class="proj-link" href="https://finple-alpha.vercel.app/" target="_blank" rel="noopener">Probar Finple <span aria-hidden="true">↗</span></a>
             <ul class="tags"><li>Inclusión financiera</li><li>IA</li><li>CMF</li><li>SII</li><li>SERNAC</li></ul>
           </div>
         </li>
